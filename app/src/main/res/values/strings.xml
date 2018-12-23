@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Megatrik</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_order">Order</string>
+    <string name="title_profil">Profil</string>
+
+    <string name="next">Lanjut</string>
+    <string name="GOT_IT">GOT IT</string>
+    <string name="NEXT">NEXT</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register_text">Belum punya akun ? Daftar</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">
+        AIzaSyC8ayaBBmy2Vip9RPJIVp3RHb_H6KFdnFI
+    </string>
+
+    <!--Error string validation -->
+    <string name="error_email">Email tidak valid</string>
+    <string name="error_password">Password tidak valid</string>
+    <string name="error_re_password">Konfirmasi password tidak valid</string>
+    <string name="error_name">Nama tidak valid</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cari_teknisi">Cari Teknisi</string>
+    <string name="alamat">Alamat</string>
+    <string name="deskripsi_alamat">Deskripsi Alamat</string>
+    <string name="deskripsi_kerusakan">Deskripsi Kerusakan</string>
+    <string name="marker_tips">*Tahan dan gulir penanda untuk lokasi yang akurat</string>
+    <string name="tap_to_start_searching">Sentuh untuk mulai mencari alamat</string>
+    <string name="pilih_alamat">Pilih Alamat</string>
+
+    <string name="short_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+
+    <string name="middle_lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam efficitur ipsum in placerat molestie.  Fusce quis mauris a enim sollicitudin</string>
+    <string name="medium_lorem_ipsum">Quisque imperdiet nunc at massa dictum volutpat. Etiam id orci ipsum. Integer id ex dignissim</string>
+
+    <string name="long_lorem_ipsum">
+        Duis tellus metus, elementum a lectus id, aliquet interdum mauris. Nam bibendum efficitur sollicitudin. Proin eleifend libero velit, nec fringilla dolor finibus quis. nMorbi eu libero pellentesque, rutrum metus quis, blandit est. Fusce bibendum accumsan nisi vulputate feugiat. In fermentum laoreet euismod. Praesent sem nisl, facilisis eget odio at, rhoncus scelerisque ipsum. Nulla orci dui, dignissim a risus ut, lobortis porttitor velit.
+        \n\nNulla id lectus metus. Maecenas a lorem in odio auctor facilisis non vitae nunc. Sed malesuada volutpat massa. Praesent sit amet lacinia augue, mollis tempor dolor.
+    </string>
+    <string name="error_connect_server">Tidak dapat terhubung ke server</string>
+</resources>
