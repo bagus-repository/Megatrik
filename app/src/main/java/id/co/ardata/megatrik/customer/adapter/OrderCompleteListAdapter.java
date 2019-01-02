@@ -1,11 +1,13 @@
 package id.co.ardata.megatrik.customer.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.text.ParseException;
@@ -17,6 +19,8 @@ import java.util.concurrent.TimeUnit;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import id.co.ardata.megatrik.customer.R;
+import id.co.ardata.megatrik.customer.activity.OrderDetailActivity;
+import id.co.ardata.megatrik.customer.activity.ReviewActivity;
 import id.co.ardata.megatrik.customer.model.CustomerOrdersItem;
 
 public class OrderCompleteListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -73,10 +77,35 @@ public class OrderCompleteListAdapter extends RecyclerView.Adapter<RecyclerView.
         TextView tvOrderCreatedAt;
         @BindView(R.id.tvDurasi)
         TextView tvDurasi;
+        @BindView(R.id.btOrderDetail)
+        Button btOrderDetail;
+        @BindView(R.id.btOrderReview)
+        Button btOrderReview;
 
         public MyViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
+
+            btOrderDetail.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    CustomerOrdersItem item = customerOrdersItems.get(getAdapterPosition());
+                    Intent intent = new Intent(ctx, OrderDetailActivity.class);
+                    intent.putExtra("order_id", item.getId());
+                    ctx.startActivity(intent);
+                }
+            });
+
+            btOrderReview.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    CustomerOrdersItem item = customerOrdersItems.get(getAdapterPosition());
+                    Intent intent = new Intent(ctx, ReviewActivity.class);
+                    intent.putExtra("transaction_id", item.getTransaction().getId());
+                    intent.putExtra("load", true);
+                    ctx.startActivity(intent);
+                }
+            });
         }
     }
 

@@ -1,22 +1,10 @@
-package id.co.ardata.megatrik.customer.model;
+package id.co.ardata.megatrik.customer.model.order;
 
 import javax.annotation.Generated;
 import com.google.gson.annotations.SerializedName;
 
 @Generated("com.robohorse.robopojogenerator")
 public class Transaction{
-
-	@SerializedName("transactionstatus")
-	private Transactionstatus transactionstatus;
-
-	@SerializedName("payment_value")
-	private String paymentValue;
-
-	@SerializedName("transactionreview")
-	private Transactionreview transactionreview;
-
-	@SerializedName("created_at")
-	private String createdAt;
 
 	@SerializedName("total")
 	private int total;
@@ -27,6 +15,9 @@ public class Transaction{
 	@SerializedName("updated_at")
 	private String updatedAt;
 
+	@SerializedName("payment_value")
+	private String paymentValue;
+
 	@SerializedName("transaction_number")
 	private String transactionNumber;
 
@@ -36,6 +27,9 @@ public class Transaction{
 	@SerializedName("bank_name")
 	private String bankName;
 
+	@SerializedName("created_at")
+	private String createdAt;
+
 	@SerializedName("id")
 	private int id;
 
@@ -44,38 +38,6 @@ public class Transaction{
 
 	@SerializedName("bank_account")
 	private String bankAccount;
-
-	public void setTransactionstatus(Transactionstatus transactionstatus){
-		this.transactionstatus = transactionstatus;
-	}
-
-	public Transactionstatus getTransactionstatus(){
-		return transactionstatus;
-	}
-
-	public void setPaymentValue(String paymentValue){
-		this.paymentValue = paymentValue;
-	}
-
-	public String getPaymentValue(){
-		return paymentValue;
-	}
-
-	public void setTransactionreview(Transactionreview transactionreview){
-		this.transactionreview = transactionreview;
-	}
-
-	public Transactionreview getTransactionreview(){
-		return transactionreview;
-	}
-
-	public void setCreatedAt(String createdAt){
-		this.createdAt = createdAt;
-	}
-
-	public String getCreatedAt(){
-		return createdAt;
-	}
 
 	public void setTotal(int total){
 		this.total = total;
@@ -101,6 +63,14 @@ public class Transaction{
 		return updatedAt;
 	}
 
+	public void setPaymentValue(String paymentValue){
+		this.paymentValue = paymentValue;
+	}
+
+	public String getPaymentValue(){
+		return paymentValue;
+	}
+
 	public void setTransactionNumber(String transactionNumber){
 		this.transactionNumber = transactionNumber;
 	}
@@ -123,6 +93,14 @@ public class Transaction{
 
 	public String getBankName(){
 		return bankName;
+	}
+
+	public void setCreatedAt(String createdAt){
+		this.createdAt = createdAt;
+	}
+
+	public String getCreatedAt(){
+		return createdAt;
 	}
 
 	public void setId(int id){
@@ -153,16 +131,14 @@ public class Transaction{
  	public String toString(){
 		return 
 			"Transaction{" + 
-			"transactionstatus = '" + transactionstatus + '\'' + 
-			",payment_value = '" + paymentValue + '\'' + 
-			",transactionreview = '" + transactionreview + '\'' + 
-			",created_at = '" + createdAt + '\'' + 
-			",total = '" + total + '\'' + 
+			"total = '" + total + '\'' + 
 			",payment_type = '" + paymentType + '\'' + 
 			",updated_at = '" + updatedAt + '\'' + 
+			",payment_value = '" + paymentValue + '\'' + 
 			",transaction_number = '" + transactionNumber + '\'' + 
 			",name = '" + name + '\'' + 
 			",bank_name = '" + bankName + '\'' + 
+			",created_at = '" + createdAt + '\'' + 
 			",id = '" + id + '\'' + 
 			",order_id = '" + orderId + '\'' + 
 			",bank_account = '" + bankAccount + '\'' + 

@@ -113,7 +113,7 @@ public class PaymentTransferActivity extends AppCompatActivity {
             Call<Transaction> call = apiInterface.storeTransaction(params);
             call.enqueue(new Callback<Transaction>() {
                 @Override
-                public void onResponse(Call<Transaction> call, Response<Transaction> response) {
+                public void onResponse(Call<Transaction> call, final Response<Transaction> response) {
                     progressHUD.dismiss();
                     if (response.isSuccessful()){
                         CFAlertDialog.Builder builder = new CFAlertDialog.Builder(mContext)
@@ -125,9 +125,9 @@ public class PaymentTransferActivity extends AppCompatActivity {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
                                         dialogInterface.dismiss();
-                                        Intent intent = new Intent(mContext, MainActivity.class);
-                                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(intent);
+                                        Intent toReview = new Intent(mContext, ReviewActivity.class);
+                                        toReview.putExtra("transaction_id", response.body().getId());
+                                        startActivity(toReview);
                                         finish();
                                     }
                                 });

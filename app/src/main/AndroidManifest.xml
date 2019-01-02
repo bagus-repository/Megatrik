@@ -46,7 +46,8 @@
         <activity android:name=".activity.HemlpActivity" />
         <activity android:name=".activity.AboutUsActivity" />
         <activity android:name=".activity.WebViewActivity" />
-        <activity android:name=".activity.ForgotPasswordActivity"></activity>
+        <activity android:name=".activity.ForgotPasswordActivity" />
+        <activity android:name=".activity.OrderDetailActivity"></activity>
     </application>
 
 </manifest>

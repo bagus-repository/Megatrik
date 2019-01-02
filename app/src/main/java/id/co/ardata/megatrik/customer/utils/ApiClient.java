@@ -3,6 +3,7 @@ package id.co.ardata.megatrik.customer.utils;
 import android.content.Context;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -37,7 +38,10 @@ public class ApiClient {
                 }
                 return chain.proceed(request);
             }
-        });
+        })
+                .connectTimeout(45, TimeUnit.SECONDS)
+                .writeTimeout(45, TimeUnit.SECONDS)
+                .readTimeout(45, TimeUnit.SECONDS);
         retrofit = new Retrofit.Builder()
                 .baseUrl(ApiConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())

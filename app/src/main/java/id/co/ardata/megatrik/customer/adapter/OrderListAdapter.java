@@ -18,6 +18,7 @@ import id.co.ardata.megatrik.customer.R;
 import id.co.ardata.megatrik.customer.activity.PaymentActivity;
 import id.co.ardata.megatrik.customer.model.CustomerOrdersItem;
 import id.co.ardata.megatrik.customer.model.MaterialsItem;
+import id.co.ardata.megatrik.customer.model.ServicesItem;
 import id.co.ardata.megatrik.customer.utils.Tools;
 
 public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -109,7 +110,18 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                     CustomerOrdersItem ordersItem = customerOrdersItems.get(getAdapterPosition());
                     if (materialClickListener != null){
                         List<MaterialsItem> materials = ordersItem.getMaterials();
-                        String materials_text = "";
+                        List<ServicesItem> services = ordersItem.getServicesItems();
+
+                        String service_text = "Service :\n";
+                        int service_total = 0;
+                        for (int i = 0; i < services.size(); i++) {
+                            service_text += services.get(i).getServicelist().getName()+" Rp. "+
+                                    services.get(i).getServicelist().getPrice()+"\n";
+                            service_total += services.get(i).getServicelist().getPrice();
+                        }
+                        service_text += "Total Rp."+service_total;
+
+                        String materials_text = service_text+"\nMaterial :\n";
                         int total = 0;
                         for (int i = 0; i < materials.size(); i++) {
                             int qty = materials.get(i).getQuantity();
@@ -117,7 +129,7 @@ public class OrderListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
                             total += harga*qty;
                             materials_text += qty+"x "+materials.get(i).getName()+" @Rp."+harga+"\n";
                         }
-                        materials_text += "\nTotal : Rp."+total;
+                        materials_text += "\nTotal : Rp."+(total+service_total);
                         materialClickListener.onItemClicked("Harga Estimasi", materials_text);
                     }
                 }

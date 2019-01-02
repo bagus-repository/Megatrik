@@ -9,6 +9,7 @@ import id.co.ardata.megatrik.customer.model.OAuthToken;
 import id.co.ardata.megatrik.customer.model.Order;
 import id.co.ardata.megatrik.customer.model.ServiceCategory;
 import id.co.ardata.megatrik.customer.model.Transaction;
+import id.co.ardata.megatrik.customer.model.TransactionReviewsItem;
 import id.co.ardata.megatrik.customer.model.User;
 import id.co.ardata.megatrik.customer.model.UserOperator;
 import id.co.ardata.megatrik.customer.model.UserOrder;
@@ -26,7 +27,7 @@ public interface ApiInterface {
      * List api user dan authnya
      * @return
      */
-    @GET(ApiConfig.API_URL+"oauthclients/4")
+    @GET(ApiConfig.API_URL+"oauthclients/2")
     Call<OAuthSecret> getOAuthSecret();
 
     @FormUrlEncoded
@@ -86,6 +87,11 @@ public interface ApiInterface {
             @FieldMap HashMap<String, String> params
     );
 
+    @GET(ApiConfig.API_URL+"orders/{id}")
+    Call<id.co.ardata.megatrik.customer.model.order.Order> getOrder(
+            @Path("id") String id
+    );
+
     @GET(ApiConfig.API_URL+"orders/{id}/{city_name}")
     Call<UserOperator> getOrderStatus(
             @Path("id") String id,
@@ -101,5 +107,16 @@ public interface ApiInterface {
     @POST(ApiConfig.API_URL+"transactions")
     Call<Transaction> storeTransaction(
             @FieldMap HashMap<String, String> params
+    );
+
+    @FormUrlEncoded
+    @POST(ApiConfig.API_URL+"transactionreviews")
+    Call<TransactionReviewsItem> storeTransactionReview(
+            @FieldMap HashMap<String, String> params
+    );
+
+    @GET(ApiConfig.API_URL+"transactions/{id}")
+    Call<Transaction> getTransactionReview(
+            @Path("id") String transaction_id
     );
 }

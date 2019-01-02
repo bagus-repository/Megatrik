@@ -5,6 +5,6 @@ public class ApiConfig {
      * Base URL API Endpoint
      * NOTE : Keep the trailing slash
      */
-    public static final String BASE_URL = "http://192.168.0.126/super-megatrik-web/public/";
-    public static final String API_URL = "http://192.168.0.126/super-megatrik-web/public/api/";
+    public static final String BASE_URL = "http://megatrik.ardata.co.id/";
+    public static final String API_URL = "http://megatrik.ardata.co.id/api/";
 }

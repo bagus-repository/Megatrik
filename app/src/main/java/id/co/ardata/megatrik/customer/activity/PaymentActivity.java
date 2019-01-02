@@ -85,6 +85,7 @@ public class PaymentActivity extends AppCompatActivity implements RadioButton.On
                 Intent intent = new Intent(this, PaymentTransferActivity.class);
                 intent.putExtra("order_id",order_id);
                 startActivity(intent);
+                finish();
                 break;
             case "cash" :
                 CFAlertDialog.Builder builder = new CFAlertDialog.Builder(this)
@@ -129,7 +130,7 @@ public class PaymentActivity extends AppCompatActivity implements RadioButton.On
         Call<Transaction> call = apiInterface.storeTransaction(params);
         call.enqueue(new Callback<Transaction>() {
             @Override
-            public void onResponse(Call<Transaction> call, Response<Transaction> response) {
+            public void onResponse(Call<Transaction> call, final Response<Transaction> response) {
                 progressHUD.dismiss();
                 if (response.isSuccessful()){
                     CFAlertDialog.Builder builder = new CFAlertDialog.Builder(mContext)
@@ -141,6 +142,9 @@ public class PaymentActivity extends AppCompatActivity implements RadioButton.On
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 dialogInterface.dismiss();
+                                Intent toReview = new Intent(mContext, ReviewActivity.class);
+                                toReview.putExtra("transaction_id", response.body().getId());
+                                startActivity(toReview);
                                 finish();
                             }
                         });

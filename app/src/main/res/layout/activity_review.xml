@@ -38,6 +38,8 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="@dimen/spacing_medium"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"/>
 
             <TextView
@@ -49,13 +51,13 @@
                 android:text="Review"/>
 
             <EditText
-                android:id="@+id/inputReview"
+                android:id="@+id/etDescription"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="@dimen/spacing_small"
                 android:layout_marginLeft="@dimen/spacing_large"
                 android:layout_marginRight="@dimen/spacing_large"
-                android:hint="Berikan review agar kami terus memperbaiki layanan kami"
+                android:hint="Berikan review agar kami terus memperbaiki layanan kami (opsional)"
                 android:maxLines="3"
                 android:gravity="start"
                 android:textSize="16sp"
@@ -71,7 +73,7 @@
                 android:text="Rating"/>
 
             <RatingBar
-                android:id="@+id/rating_bar"
+                android:id="@+id/rtbReview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
@@ -84,12 +86,12 @@
                 android:stepSize="1" />
 
             <Button
-                android:id="@+id/btn_finish"
+                android:id="@+id/btReview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/spacing_large"
                 android:background="@drawable/btn_rect_primary"
-                android:text="Selesai"
+                android:text="Beri Review"
                 android:textColor="@android:color/white"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:elevation="3dp"
