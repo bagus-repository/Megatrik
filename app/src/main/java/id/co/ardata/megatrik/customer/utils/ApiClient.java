@@ -1,10 +1,12 @@
 package id.co.ardata.megatrik.customer.utils;
 
 import android.content.Context;
+import android.content.Intent;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import id.co.ardata.megatrik.customer.activity.LoginActivity;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -16,7 +18,7 @@ public class ApiClient {
 
     public static Retrofit retrofit;
 
-    public static ApiInterface getApiClient(Context context, final boolean token){
+    public static ApiInterface getApiClient(final Context context, final boolean token){
         final SessionManager sessionManager = new SessionManager(context);
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -24,6 +26,8 @@ public class ApiClient {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request request;
+                Response response;
+
                 if (token){
                     request = chain.request()
                             .newBuilder()
@@ -36,7 +40,14 @@ public class ApiClient {
                             .addHeader("Accept", "application/json")
                             .build();
                 }
-                return chain.proceed(request);
+                response = chain.proceed(request);
+                if (response.code() == 403 && token){
+                    sessionManager.resetProfile();
+                    Intent toLogin = new Intent(context, LoginActivity.class);
+                    toLogin.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(toLogin);
+                }
+                return response;
             }
         })
                 .connectTimeout(45, TimeUnit.SECONDS)
